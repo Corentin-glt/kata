@@ -1,0 +1,10 @@
+@import '../../Components/buttonArray/buttonArray.scss';
+@import '../../Components/modal/modal.scss';
+$fontReportTitle: Helvetica, sans-serif;
+$fontReportSize: 20px;
+
+.reportTitle {
+  font-family: $fontReportTitle;
+  font-size: $fontReportSize;
+  font-weight: lighter;
+}

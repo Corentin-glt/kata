@@ -16,17 +16,14 @@ const history = createHashHistory();
 
 
 
-
 function Root({store}) {
   return (
     <Provider store={store}>
       <Router history={history}>
-        <div>
           <Switch>
             <Route path="/" component={Home}/>
             <Route component={Error404}/>
           </Switch>
-        </div>
       </Router>
     </Provider>
   )
