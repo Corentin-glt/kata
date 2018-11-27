@@ -1,0 +1,62 @@
+$maxPercentage: 100%;
+$labelTitleFontSize: 15px;
+$labelPriceFontSize: 12px;
+$buttonFontFamily: Helvetica, sans-serif;
+$buttonColor: darken(pink, 10%);
+
+@mixin flexRowSpaceAround() {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@mixin flexColumnCenter() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttonArrayContainer {
+  width: $maxPercentage;
+  height: $maxPercentage;
+  @include flexRowSpaceAround();
+  flex-wrap: wrap;
+  flex-grow: 2;
+  .buttonContainer {
+    padding: 20px;
+    .buttonArray {
+      width: 200px;
+      height: 100px;
+      border: solid 2px $buttonColor;
+      border-radius: 10px;
+      cursor: pointer;
+      @include flexColumnCenter();
+    }
+  }
+  .buttonContainerOther {
+    padding: 20px;
+    width: $maxPercentage;
+    .buttonArrayOther {
+      width: $maxPercentage;
+      height: 100px;
+      border: solid 2px $buttonColor;
+      border-radius: 10px;
+      cursor: pointer;
+      @include flexColumnCenter();
+    }
+  }
+}
+
+.buttonArrayTitle {
+  font-family: $buttonFontFamily;
+  font-size: $labelTitleFontSize;
+  color: $buttonColor
+}
+
+.buttonArrayPrice {
+  font-family: $buttonFontFamily;
+  font-size: $labelPriceFontSize;
+  color: $buttonColor;
+}

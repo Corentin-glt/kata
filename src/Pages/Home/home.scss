@@ -1,0 +1,8 @@
+@import '../../Components/menu/menu.scss';
+
+$maxPercentage : 100%;
+
+.mainContainer {
+  height: $maxPercentage;
+  padding: 5%;
+}
