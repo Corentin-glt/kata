@@ -3,9 +3,9 @@
  */
 import React, {Component} from 'react';
 import {Switch, BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Report from './pages/Report/reportContainer';
-import Stats from './pages/Stats/statsContainer';
-import Error404 from './pages/Error404/error404';
+import Report from './Pages/Report/reportContainer';
+import Stats from './Pages/Stats/statsContainer';
+import Error404 from './Pages/Error404/error404';
 
 class Root extends Component {
   constructor(props) {
@@ -39,7 +39,6 @@ class Root extends Component {
           </Switch>
         </div>
       </Router>
-
     )
   }
 }
