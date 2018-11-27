@@ -54,7 +54,8 @@ export const createPack = (pack) => {
   return (dispatch) => {
     dispatch(loadingPack());
     console.log(pack);
-    if (!pack.title || typeof pack.title !== 'string' || !pack.price ||
+    if (!pack.title || typeof pack.title !== 'string' ||
+      pack.title.length === 0 || !pack.price ||
       typeof pack.price !== 'number' || !pack.user_id ||
       typeof pack.user_id !== "string") {
       dispatch(createPackError('Variable is missing'))
@@ -68,7 +69,8 @@ export const createPack = (pack) => {
 export const updatePack = (pack) => {
   return (dispatch) => {
     dispatch(loadingPack());
-    if (!pack.title || typeof pack.title !== 'string' || !pack.price ||
+    if (!pack.title || typeof pack.title !== 'string' ||
+      pack.title.length === 0 || !pack.price ||
       typeof pack.price !== 'number' || !pack.id ||
       typeof pack.id !== 'string') {
       dispatch(updatePackError('Variable is missing'))

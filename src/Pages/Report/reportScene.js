@@ -20,21 +20,28 @@ const ReportScene = (props) => {
     handlePrice,
     handleSubmit,
     myPacks,
-    updateMyPack,
-    deleteMyPack,
-    handleButton
+    isUpdating,
+    clickOnUpdate,
+    clickOnDelete,
+    handleButton,
+    updatePack,
+    confirm,
+    hideConfirm,
+    confirmDelete
   } = props;
   return (
     <div className="containerMyPacks">
       <h2 className="reportTitle">Préviens nous dès que tu fais une vente</h2>
-      <ButtonArray handleButton={handleButton}  showModal={showModal} array={packArray}/>
+      <ButtonArray handleButton={handleButton} showModal={showModal}
+                   array={packArray}/>
       <Reporting myPacks={myPacks}
                  isUpdate
-                 updatePack={updateMyPack}
-                 deletePack={deleteMyPack}
+                 updatePack={clickOnUpdate}
+                 deletePack={clickOnDelete}
       />
       <Modal show={show} handleClose={hideModal}>
-        <form className="formContainer" onSubmit={handleSubmit}>
+        <form className="formContainer"
+              onSubmit={isUpdating ? updatePack : handleSubmit}>
           <h3 className="modalTitle">{modalTitle}</h3>
           <label className="valueLabel">
             Label
@@ -49,6 +56,15 @@ const ReportScene = (props) => {
           <input className="validateButton" type="submit" value="Valider"/>
         </form>
       </Modal>
+      <Modal show={confirm} handleClose={hideConfirm}>
+        <div className="confirmContainer">
+        <h3 className="confirmMessage">Êtes-vous certain de vouloir supprimer cette vente ?</h3>
+          <div className="confirmButtons">
+            <button onClick={hideConfirm} className="confirmCancelButton">Annuler</button>
+            <button onClick={confirmDelete} className="confirmValidateButton">Valider</button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 };
@@ -56,9 +72,11 @@ const ReportScene = (props) => {
 ReportScene.proptypes = {
   packArray: Proptypes.array.isRequired,
   myPacks: Proptypes.array.isRequired,
+  clickOnUpdate: Proptypes.func.isRequired,
+  clickOnDelete: Proptypes.func.isRequired,
+  updatePack: Proptypes.func.isRequired,
+  isUpdating: Proptypes.bool.isRequired,
   myPackToUpdate: Proptypes.object.isRequired,
-  updateMyPack: Proptypes.func.isRequired,
-  deleteMyPack: Proptypes.func.isRequired,
   showModal: Proptypes.func.isRequired,
   hideModal: Proptypes.func.isRequired,
   show: Proptypes.bool.isRequired,
