@@ -29,7 +29,7 @@ class Report extends Component {
   }
 
   showModal() {
-    this.setState({show: true});
+    this.setState({modalTitle: 'Nouvelle Vente', show: true});
   };
 
   hideModal() {
@@ -41,12 +41,17 @@ class Report extends Component {
   }
 
   handlePrice(e) {
-    this.setState({valuePrice: e.target.value});
+    this.setState({valuePrice: parseFloat(e.target.value)});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.hideModal();
+    this.props.createPack({
+      title: this.state.valueLabel,
+      price: this.state.valuePrice,
+      user_id: this.props.userReducer.user.id
+    })
   }
 
   updateMyPack(id) {
