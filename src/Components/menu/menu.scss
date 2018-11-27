@@ -1,6 +1,8 @@
 $maxPercentage : 100%;
 $titleFontSize : 25px;
+$menuIconSize: 40px;
 $fontFamily: Helvetica, sans-serif;
+
 
 @mixin flexRowSpaceMiddle() {
   display: flex;
@@ -16,6 +18,15 @@ $fontFamily: Helvetica, sans-serif;
     font-family: $fontFamily;
     font-size: $titleFontSize;
     font-weight: lighter;
+  }
+}
+
+.linkMenu {
+  font-size: $menuIconSize;
+  text-decoration: none;
+  color: black;
+  &:focus {
+    color: black;
   }
 }
 

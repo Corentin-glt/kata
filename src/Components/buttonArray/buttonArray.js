@@ -2,9 +2,10 @@ import React from 'react';
 
 
 export default function ButtonArray(props) {
+  const {array, showModal} = props;
   return (
     <div className="buttonArrayContainer">
-      {props.array.map(item => {
+      {array.map(item => {
         return (
           <div className="buttonContainer">
             <button className="buttonArray">
@@ -16,7 +17,7 @@ export default function ButtonArray(props) {
       })
       }
       <div className="buttonContainerOther">
-        <button className="buttonArrayOther">
+        <button onClick={showModal} className="buttonArrayOther">
           <label className="buttonArrayTitle">Autre</label>
         </button>
       </div>
