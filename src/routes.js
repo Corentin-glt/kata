@@ -1,24 +1,26 @@
 /**
  * Created by corentin on 27/11/2018.
  */
-import React, {Component} from 'react';
-import {Switch, BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import Home from './Pages/Home/homeContainer';
+import React from 'react';
+import {
+  Switch,
+  HashRouter as Router,
+  Route,
+} from 'react-router-dom';
+import PropTypes from 'prop-types'
+import {Provider} from 'react-redux';
+import Error404 from './Pages/Error404/error404';
+import { createHashHistory } from "history";
+const history = createHashHistory();
 
-import Error404 from './pages/Error404/error404';
-import Home from './pages/Home/homeContainer';
 
-class Root extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      auth: false,
-      loading: true,
-    };
-  }
 
-  render() {
-    return (
-      <Router>
+
+function Root({store}) {
+  return (
+    <Provider store={store}>
+      <Router history={history}>
         <div>
           <Switch>
             <Route path="/" component={Home}/>
@@ -26,10 +28,12 @@ class Root extends Component {
           </Switch>
         </div>
       </Router>
-
-    )
-  }
+    </Provider>
+  )
 }
-;
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired
+};
 
 export default Root;

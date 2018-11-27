@@ -12,6 +12,10 @@ export default class Home extends Component {
     this.updateStats = this.updateStats.bind(this);
   }
 
+  componentDidMount() {
+    this.props.history.push('/report');
+  }
+
   updateStats() {
     this.setState({stats: !this.state.stats});
   }

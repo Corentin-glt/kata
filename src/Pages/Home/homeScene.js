@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from '../../Components/menu/menu';
-import Report from '../../pages/Report/reportContainer';
-import Stats from '../../pages/Stats/statsContainer';
+import Report from '../Report/reportContainer';
+import Stats from '../Stats/statsContainer';
 import {Switch, BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Home from "./homeContainer";
 import Error404 from "../Error404/error404";

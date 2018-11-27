@@ -1,0 +1,13 @@
+/**
+ * Created by corentin on 27/11/2018.
+ */
+export const LOADING_PACK = 'LOADING_PACK';
+
+export const CREATE_PACK_SUCCESS = 'CREATE_PACK_SUCCESS';
+export const CREATE_PACK_ERROR = 'CREATE_PACK_ERROR';
+
+export const DELETE_PACK_SUCCESS = 'DELETE_PACK_SUCCESS';
+export const DELETE_PACK_ERROR = 'DELETE_PACK_ERROR';
+
+export const UPDATE_PACK_SUCCESS = 'UPDATE_PACK_SUCCESS';
+export const UPDATE_PACK_ERROR = 'UPDATE_PACK_ERROR';
