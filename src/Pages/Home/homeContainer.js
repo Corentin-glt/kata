@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import HomeScene from './homeScene';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {ActionCreators} from '../../Actions/index';
 
 
-
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +27,20 @@ export default class Home extends Component {
     return <HomeScene
       stats={this.state.stats}
       updateStats={this.updateStats}
+      user={this.props.userReducer.user}
     />
   }
 
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    userReducer: state.userReducer,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(ActionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

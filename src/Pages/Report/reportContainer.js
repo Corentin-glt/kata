@@ -91,6 +91,7 @@ class Report extends Component {
         myPackToUpdate={this.state.myPackToUpdate}
         updateMyPack={this.updateMyPack}
         deleteMyPack={this.deleteMyPack}
+        user={this.props.userReducer.user}
       />
     )
   }
