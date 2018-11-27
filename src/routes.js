@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {Switch, BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Report from './pages/Report/reportContainer';
 import Stats from './pages/Stats/statsContainer';
+import Error404 from './pages/Error404/error404';
 
 class Root extends Component {
   constructor(props) {
@@ -30,9 +31,12 @@ class Root extends Component {
               <Link to="/stats">Stats</Link>
             </li>
           </ul>
-          <Route exact path="/" component={Report}/>
-          <Route path="/report" component={Report}/>
-          <Route path="/stats" component={Stats}/>
+          <Switch>
+            <Route exact path="/" component={Report}/>
+            <Route path="/report" component={Report}/>
+            <Route path="/stats" component={Stats}/>
+            <Route component={Error404}/>
+          </Switch>
         </div>
       </Router>
 
