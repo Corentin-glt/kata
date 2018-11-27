@@ -3,18 +3,15 @@
  */
 import React from 'react';
 import Proptypes from 'prop-types';
-import ButtonArray from '../../Components/buttonArray/buttonArray';
 
 const ReportScene = (props) => {
   return(
     <div>
-      <ButtonArray array={props.packArray}/>
+      REPORT
     </div>
   )
 };
 
-ReportScene.proptypes = {
-  packArray: Proptypes.arrayOf(Object).isRequired
-};
+ReportScene.proptypes = {};
 
 export default ReportScene;
