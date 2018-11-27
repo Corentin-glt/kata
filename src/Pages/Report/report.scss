@@ -1,10 +1,73 @@
 @import '../../Components/buttonArray/buttonArray.scss';
 @import '../../Components/modal/modal.scss';
 $fontReportTitle: Helvetica, sans-serif;
-$fontReportSize: 20px;
+$fontReportSize: 22px;
+$fontLabelSize: 18px;
+$fontInputSize: 16px;
+$buttonColor: darken(pink, 30%);
+
+@mixin displayFlexColumn() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
 
 .reportTitle {
   font-family: $fontReportTitle;
   font-size: $fontReportSize;
   font-weight: lighter;
+}
+
+.formContainer {
+  padding: 20px;
+  @include displayFlexColumn();
+  .modalTitle {
+    font-family: $fontReportTitle;
+    font-size: $fontReportSize;
+  }
+  .valueLabel {
+    height: 100%;
+    width: 100%;
+    margin: 10px 0;
+    font-size: $fontLabelSize;
+    font-family: $fontReportTitle;
+    @include displayFlexColumn();
+  }
+  .inputLabel {
+    min-height: 100px;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: gray solid 1px;
+    font-size: $fontInputSize;
+    padding: 10px;
+    box-sizing:border-box;
+    margin-bottom: 20px;
+  }
+  .inputPrice {
+    width: 100%;
+    max-width: 100%;
+    min-height: 50px;
+    border-radius: 10px;
+    font-size: $fontInputSize;
+    border: gray solid 1px;
+    padding: 10px;
+    box-sizing:border-box;
+    margin-bottom: 20px;
+
+  }
+
+  .validateButton {
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border: 2px solid $buttonColor;
+    border-radius: 5px;
+    font-family: $fontReportTitle;
+    font-size:$fontReportSize;
+    font-weight: bold;
+    color: $buttonColor;
+  }
 }

@@ -19,17 +19,20 @@ const ReportScene = (props) => {
                  deletePack={props.deleteMyPack}
       />
       <Modal show={show} handleClose={hideModal}>
-        <form onSubmit={handleSubmit}>
-          <h3>{modalTitle}</h3>
-          <label>
+        <form className="formContainer" onSubmit={handleSubmit}>
+          <h3 className="modalTitle">{modalTitle}</h3>
+          <label className="valueLabel">
             Label
-            <input type="text" value={valueLabel} onChange={handleLabel}/>
           </label>
-          <label>
+          <textarea className="inputLabel" value={valueLabel}
+                    onChange={handleLabel}/>
+          <label className="valueLabel">
             Prix
-            <input type="number" value={valuePrice} onChange={handlePrice}/>
           </label>
-          <input type="submit" value="Submit"/>
+          <input className="inputPrice" type="number" value={valuePrice}
+                 onChange={handlePrice}/>
+
+          <input className="validateButton" type="submit" value="Valider"/>
         </form>
       </Modal>
     </div>

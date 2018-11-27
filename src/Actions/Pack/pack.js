@@ -53,6 +53,7 @@ export const updatePackError = (error) => {
 export const createPack = (pack) => {
   return (dispatch) => {
     dispatch(loadingPack());
+    console.log(pack);
     if (!pack.title || typeof pack.title !== 'string' || !pack.price ||
       typeof pack.price !== 'number' || !pack.user_id ||
       typeof pack.user_id !== "string") {
