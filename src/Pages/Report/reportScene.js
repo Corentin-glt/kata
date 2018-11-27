@@ -7,8 +7,8 @@ import Reporting from "../../Components/reporting/reporting";
 
 const ReportScene = (props) => {
   return (
-    <div>
-      REPORT
+    <div className="containerReport">
+      <div className="title"> </div>
       <div className="containerMyPacks">
         <Reporting myPacks={props.myPacks}
                    isUpdate

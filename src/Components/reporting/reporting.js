@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import Proptypes from 'prop-types';
-import ButtonPack from "../buttonPack/buttonPack";
+import ButtonPack from "../ButtonPack/buttonPack";
 
 function Reporting(props) {
   return (
@@ -36,7 +36,6 @@ function Reporting(props) {
                         deletePack={props.isUpdate ? props.deleteMyPack : null }
             />
           )
-
         })}
       </div>
     </div>

@@ -42,7 +42,7 @@ class Report extends Component {
     return (
       <div>
         <ReportScene packArray={packArray}
-                     myPacks={this.props.packReducer.packs}
+                     myPacks={this.props.packReducer.packs.reverse()}
                      myPackToUpdate={this.state.myPackToUpdate}
                      updateMyPack={this.updateMyPack}
                      deleteMyPack={this.deleteMyPack}
