@@ -1,14 +1,55 @@
 .containerReporting {
+  //padding: 20px;
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  //align-items: center;
 }
 
 .titleContainerReporting {
   flex-grow: 1;
   display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+}
 
+.titleContainerReporting {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.titleUpdateTrue {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.titleUpdateFalse {
+  padding-left: 10px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.priceUpdateTrue {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+.priceUpdateFalse {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.arrayMyPacks {
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

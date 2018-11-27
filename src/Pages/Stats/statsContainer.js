@@ -15,7 +15,7 @@ class Stats extends Component {
 
   render() {
     return (
-      <StatsScene myPacks={this.props.packReducer.packs} />
+      <StatsScene myPacks={this.props.packReducer.packs.reverse()} />
     )
   }
 }
