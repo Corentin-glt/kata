@@ -6,7 +6,6 @@ import StatsScene from "./statsScene";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ActionCreators} from '../../Actions/index';
-import async from 'async';
 
 class Stats extends Component {
   constructor(props) {

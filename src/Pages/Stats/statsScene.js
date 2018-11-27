@@ -8,7 +8,9 @@ import Reporting from "../../Components/reporting/reporting";
 const StatsScene = (props) => {
   return(
     <div>
-      STATS
+      <div className="titleStatsContainer">
+        Voici tes stats
+      </div>
       <div className="containerMyPacks">
         <Reporting myPacks={props.myPacks}
                    isUpdate={false}
