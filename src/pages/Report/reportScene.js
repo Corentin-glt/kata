@@ -5,7 +5,11 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 const ReportScene = (props) => {
-
+  return(
+    <div>
+      REPORT
+    </div>
+  )
 }
 
 ReportScene.proptypes = {};

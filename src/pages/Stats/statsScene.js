@@ -5,7 +5,11 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 const StatsScene = (props) => {
-
+  return(
+    <div>
+      STATS
+    </div>
+  )
 };
 
 StatsScene.proptypes = {};
