@@ -33,10 +33,11 @@ function arrayPack(props) {
   return (
     <div className="arrayMyPacks">
       {props.myPacks.length > 0 ?
-        props.myPacks.map((item) => {
+        props.myPacks.map((item, i) => {
         return (
           <ButtonPack title={item.title}
                       price={item.price}
+                      key={i}
                       id={item.id}
                       index={props.isUpdate ? null : item.numberOfTotal}
                       isUpdate={props.isUpdate}

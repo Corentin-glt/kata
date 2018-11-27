@@ -19,6 +19,8 @@ class Report extends Component {
       modalTitle: '',
       myPackToUpdate: {},
       isUpdating: false,
+      confirm: false,
+      packToDel: null,
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -29,6 +31,9 @@ class Report extends Component {
     this.clickOnDelete = this.clickOnDelete.bind(this);
     this.updatePack = this.updatePack.bind(this);
     this.handleButton = this.handleButton.bind(this);
+    this.hideConfirm = this.hideConfirm.bind(this);
+    this.showConfirm = this.showConfirm.bind(this);
+    this.confirmDelete = this.confirmDelete.bind(this);
   }
 
   componentWillUnmout() {
@@ -40,7 +45,7 @@ class Report extends Component {
   };
 
   hideModal() {
-    this.setState({show: false});
+    this.setState({show: false, valueLabel: '', valuePrice: ''});
   };
 
   handleLabel(e) {
@@ -59,14 +64,33 @@ class Report extends Component {
     })
   }
 
+  hideConfirm() {
+    this.setState({confirm: false});
+  }
+
+  showConfirm() {
+    this.setState({confirm: true});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.hideModal();
     this.props.createPack({
       title: this.state.valueLabel,
       price: this.state.valuePrice,
       user_id: this.props.userReducer.user.id
-    })
+    });
+    this.timeout = setTimeout(() => {
+      if (this.props.packReducer.success) {
+        this.setState({
+          isCreating: false,
+          valueLabel: '',
+          show: false,
+          valuePrice: 0,
+        })
+      } else {
+        console.log('ERROR => ', this.props.packReducer.error)
+      }
+    }, 500);
   }
 
   clickOnUpdate(id) {
@@ -87,12 +111,17 @@ class Report extends Component {
   }
 
   clickOnDelete(id) {
+    this.setState({confirm: true, packToDel: id});
+  }
+
+  confirmDelete() {
     let myPackToDelete = {};
     const findIndex = this.props.packReducer.packs.findIndex(
-      item => item.id === id);
+      item => item.id === this.state.packToDel);
     if (findIndex > -1) {
       myPackToDelete = this.props.packReducer.packs[findIndex];
-      this.props.deletePack(myPackToDelete)
+      this.props.deletePack(myPackToDelete);
+      this.hideConfirm();
     }
   }
 
@@ -141,6 +170,10 @@ class Report extends Component {
         updatePack={this.updatePack}
         user={this.props.userReducer.user}
         handleButton={this.handleButton}
+        confirm={this.state.confirm}
+        hideConfirm={this.hideConfirm}
+        showConfirm={this.showConfirm}
+        confirmDelete={this.confirmDelete}
       />
     )
   }

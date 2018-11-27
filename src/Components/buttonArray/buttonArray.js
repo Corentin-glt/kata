@@ -6,8 +6,8 @@ export default function ButtonArray(props) {
   const {array, showModal, handleButton} = props;
   const row1 = [], row2 = [];
   array.forEach((item, i) => {
-    const elem = <button onClick={() => handleButton(item)} className="buttonArray">
-      <label className="buttonArrayTitle">Pack {item.title}</label>
+    const elem = <button key={i} onClick={() => handleButton(item)} className="buttonArray">
+      <label className="buttonArrayTitle">{item.title}</label>
       <label className="buttonArrayPrice">{item.price}€</label>
     </button>;
     i < 3 ? row1.push(elem) : row2.push(elem);

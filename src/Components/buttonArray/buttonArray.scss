@@ -1,6 +1,5 @@
 $maxPercentage: 100%;
-$labelTitleFontSize: 15px;
-$labelPriceFontSize: 12px;
+$labelTitleFontSize: 16px;
 $buttonFontFamily: Helvetica, sans-serif;
 $buttonColor: #FF69B4;
 
@@ -29,29 +28,24 @@ $buttonColor: #FF69B4;
         width: 100%;
         height: 100px;
         border: solid 2px $buttonColor;
-        border-radius: 10px;
+        border-radius: 5px;
         cursor: pointer;
         outline: none;
         color: $buttonColor;
+        font-family: $buttonFontFamily;
+        font-size: $labelTitleFontSize;
+        font-weight: bold;
         @include flexColumnCenter();
         &:hover {
           border-color: darken($buttonColor, 30%);
           color: darken($buttonColor, 30%);
         }
+        @media (max-width: 750px) {
+          height: 50px;
+          font-size: 12px;
+        }
       }
   }
 }
 
-.buttonArrayTitle {
-  font-family: $buttonFontFamily;
-  font-size: $labelTitleFontSize;
-  //color: $buttonColor;
 
-}
-
-.buttonArrayPrice {
-  font-family: $buttonFontFamily;
-  font-size: $labelPriceFontSize;
-  //color: $buttonColor;
-
-}

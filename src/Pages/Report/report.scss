@@ -15,10 +15,17 @@ $buttonColor: #FF69B4;
   align-items: flex-start;
 }
 
+@mixin displayFlexRowEnd() {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 .reportTitle {
   font-family: $fontReportTitle;
-  font-size: $fontReportSize;
-  font-weight: lighter;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .formContainer {
@@ -72,5 +79,55 @@ $buttonColor: #FF69B4;
     font-weight: bold;
     color: $buttonColor;
     outline: none;
+    &:hover {
+      cursor: pointer;
+      border: 2px solid darken($buttonColor, 30%);
+      color: darken($buttonColor, 30%);
+    }
+  }
+}
+
+.confirmContainer {
+  padding: 20px;
+  @include displayFlexColumn();
+  .confirmButtons {
+    width: 100%;
+    @include displayFlexRowEnd();
+  }
+  .confirmMessage {
+    font-size: $fontReportSize;
+    font-family: $fontReportTitle;
+  }
+}
+
+.confirmCancelButton {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: darkred;
+  color:white;
+  font-size: $fontInputSize;
+  font-family: $fontReportTitle;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: darken(darkred, 10%);
+  }
+}
+
+.confirmValidateButton {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  font-size: $fontInputSize;
+  font-family: $fontReportTitle;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: darken(green, 10%);
   }
 }

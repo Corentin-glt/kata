@@ -25,6 +25,9 @@ const ReportScene = (props) => {
     clickOnDelete,
     handleButton,
     updatePack,
+    confirm,
+    hideConfirm,
+    confirmDelete
   } = props;
   return (
     <div className="containerMyPacks">
@@ -52,6 +55,15 @@ const ReportScene = (props) => {
                  onChange={handlePrice}/>
           <input className="validateButton" type="submit" value="Valider"/>
         </form>
+      </Modal>
+      <Modal show={confirm} handleClose={hideConfirm}>
+        <div className="confirmContainer">
+        <h3 className="confirmMessage">Êtes-vous certain de vouloir supprimer cette vente ?</h3>
+          <div className="confirmButtons">
+            <button onClick={hideConfirm} className="confirmCancelButton">Annuler</button>
+            <button onClick={confirmDelete} className="confirmValidateButton">Valider</button>
+          </div>
+        </div>
       </Modal>
     </div>
   )

@@ -16,8 +16,25 @@ class Stats extends Component {
     }
   }
 
-  componentWillMount() {
-    
+
+  componentWillMount(){
+    let newArrayPacks = [];
+    const packsReducer = [...this.props.packReducer.packs.reverse()];
+    packsReducer.forEach(item => {
+      const found = newArrayPacks.some(newItem => newItem.title.toLowerCase() === item.title.toLowerCase());
+      if (!found) {
+        newArrayPacks.push({title: item.title, price: item.price, numberOfTotal: 1});
+      } else {
+        newArrayPacks.map(pack=> {
+          if (pack.title === item.title) {
+            return {
+              title: item.title, price: pack.price+=item.price, numberOfTotal: pack.numberOfTotal++
+            };
+          }
+        });
+      }
+    });
+    this.setState({myPacks: newArrayPacks});
   }
 
   render() {
