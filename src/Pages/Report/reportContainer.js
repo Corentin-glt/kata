@@ -17,15 +17,21 @@ class Report extends Component {
       valueLabel: '',
       valuePrice: 0,
       modalTitle: '',
-      myPackToUpdate: {}
+      myPackToUpdate: {},
+      isUpdating: false,
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.handleLabel = this.handleLabel.bind(this);
     this.handlePrice = this.handlePrice.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateMyPack = this.updateMyPack.bind(this);
-    this.deleteMyPack = this.deleteMyPack.bind(this);
+    this.clickOnUpdate = this.clickOnUpdate.bind(this);
+    this.clickOnDelete = this.clickOnDelete.bind(this);
+    this.updatePack = this.updatePack.bind(this);
+  }
+
+  componentWillUnmout() {
+    clearTimeout(this.timeout);
   }
 
   showModal() {
@@ -54,17 +60,24 @@ class Report extends Component {
     })
   }
 
-  updateMyPack(id) {
+  clickOnUpdate(id) {
     let myPackToUpdate = {};
     const findIndex = this.props.packReducer.packs.findIndex(
       item => item.id === id);
     if (findIndex > -1) {
       myPackToUpdate = this.props.packReducer.packs[findIndex];
-      this.setState({myPackToUpdate: myPackToUpdate});
+      this.setState({
+        show: true,
+        isUpdating: true,
+        valueLabel: myPackToUpdate.title,
+        valuePrice: myPackToUpdate.price,
+        myPackToUpdate: myPackToUpdate,
+        modalTitle: 'Modification de vente'
+      });
     }
   }
 
-  deleteMyPack(id) {
+  clickOnDelete(id) {
     let myPackToDelete = {};
     const findIndex = this.props.packReducer.packs.findIndex(
       item => item.id === id);
@@ -74,6 +87,32 @@ class Report extends Component {
     }
   }
 
+  updatePack(e) {
+    e.preventDefault();
+    this.props.updatePack({
+      price: this.state.valuePrice,
+      title: this.state.valueLabel,
+      id: this.state.myPackToUpdate.id,
+      user_id: this.state.myPackToUpdate.user_id,
+    });
+    this.timeout = setTimeout(() => {
+      if (this.props.packReducer.success) {
+        this.setState({
+          myPackToUpdate: {},
+          isUpdating: false,
+          show: false,
+          valueLabel: '',
+          valuePrice: 0,
+          modalTitle: ''
+        })
+      } else {
+        console.log('ERROR => ', this.props.packReducer.error)
+      }
+    }, 500);
+
+
+  }
+
   render() {
     return (
       <ReportScene
@@ -81,6 +120,7 @@ class Report extends Component {
         showModal={this.showModal}
         hideModal={this.hideModal}
         show={this.state.show}
+        isUpdating={this.state.isUpdating}
         modalTitle={this.state.modalTitle}
         valuePrice={this.state.valuePrice}
         valueLabel={this.state.valueLabel}
@@ -89,8 +129,9 @@ class Report extends Component {
         handleSubmit={this.handleSubmit}
         myPacks={this.props.packReducer.packs}
         myPackToUpdate={this.state.myPackToUpdate}
-        updateMyPack={this.updateMyPack}
-        deleteMyPack={this.deleteMyPack}
+        clickOnUpdate={this.clickOnUpdate}
+        clickOnDelete={this.clickOnDelete}
+        updatePack={this.updatePack}
       />
     )
   }

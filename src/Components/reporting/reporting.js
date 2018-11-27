@@ -24,25 +24,34 @@ function Reporting(props) {
           {totalEuros({...props})} €
         </div>
       </div>
-      <div className="arrayMyPacks">
-        {props.myPacks.map((item, index) => {
-          return (
-            <ButtonPack title={item.title}
-                        price={item.price}
-                        id={item.id}
-                        index={index + 1}
-                        isUpdate={props.isUpdate}
-                        updatePack={ props.isUpdate ? props.updateMyPack : null}
-                        deletePack={props.isUpdate ? props.deleteMyPack : null }
-            />
-          )
-        })}
-      </div>
+      {arrayPack(props)}
     </div>
   )
 }
 
-function totalEuros(props){
+function arrayPack(props) {
+  return (
+    <div className="arrayMyPacks">
+      {props.myPacks.length > 0 ?
+        props.myPacks.map((item) => {
+        return (
+          <ButtonPack title={item.title}
+                      price={item.price}
+                      id={item.id}
+                      index={props.isUpdate ? null : item.numberOfTotal}
+                      isUpdate={props.isUpdate}
+                      updatePack={ props.isUpdate ? props.updatePack : null}
+                      deletePack={props.isUpdate ? props.deletePack : null }
+          />
+        )
+      }) :
+        'Désolé, vous n\'avez toujours de vente'
+      }
+    </div>
+  )
+}
+
+function totalEuros(props) {
   let total = 0;
   props.myPacks.forEach(item => {
     total = total + item.price
