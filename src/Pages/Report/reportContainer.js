@@ -17,15 +17,17 @@ class Report extends Component {
       valueLabel: '',
       valuePrice: 0,
       modalTitle: '',
-      myPackToUpdate: {}
+      myPackToUpdate: {},
+      isUpdating: false,
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.handleLabel = this.handleLabel.bind(this);
     this.handlePrice = this.handlePrice.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateMyPack = this.updateMyPack.bind(this);
-    this.deleteMyPack = this.deleteMyPack.bind(this);
+    this.clickOnUpdate = this.clickOnUpdate.bind(this);
+    this.clickOnDelete = this.clickOnDelete.bind(this);
+    this.updatePack = this.updatePack.bind(this);
   }
 
   showModal() {
@@ -49,17 +51,23 @@ class Report extends Component {
     console.log(this.state);
   }
 
-  updateMyPack(id) {
+  clickOnUpdate(id) {
     let myPackToUpdate = {};
     const findIndex = this.props.packReducer.packs.findIndex(
       item => item.id === id);
     if (findIndex > -1) {
       myPackToUpdate = this.props.packReducer.packs[findIndex];
-      this.setState({myPackToUpdate: myPackToUpdate});
+      this.setState({
+        show: true,
+        isUpdating: true,
+        valueLabel: myPackToUpdate.title,
+        valuePrice: myPackToUpdate.price,
+        myPackToUpdate: myPackToUpdate
+      });
     }
   }
 
-  deleteMyPack(id) {
+  clickOnDelete(id) {
     let myPackToDelete = {};
     const findIndex = this.props.packReducer.packs.findIndex(
       item => item.id === id);
@@ -67,6 +75,26 @@ class Report extends Component {
       myPackToDelete = this.props.packReducer.packs[findIndex];
       this.props.deletePack(myPackToDelete)
     }
+  }
+
+  updatePack(e){
+    e.preventDefault();
+    this.props.updatePack({
+      price: this.state.valuePrice,
+      title: this.state.valueLabel,
+      id: this.state.myPackToUpdate.id,
+      user_id: this.state.myPackToUpdate.user_id,
+    })
+      .then(() => {
+        this.setState({
+          myPackToUpdate: {},
+          isUpdating: false,
+          show: false,
+          valueLabel: '',
+          valuePrice: 0
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -84,8 +112,9 @@ class Report extends Component {
         handleSubmit={this.handleSubmit}
         myPacks={this.props.packReducer.packs}
         myPackToUpdate={this.state.myPackToUpdate}
-        updateMyPack={this.updateMyPack}
-        deleteMyPack={this.deleteMyPack}
+        clickOnUpdate={this.clickOnUpdate}
+        clickOnDelete={this.clickOnDelete}
+        updatePack={this.updatePack}
       />
     )
   }

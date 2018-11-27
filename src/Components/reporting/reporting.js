@@ -32,8 +32,8 @@ function Reporting(props) {
                         id={item.id}
                         index={index + 1}
                         isUpdate={props.isUpdate}
-                        updatePack={ props.isUpdate ? props.updateMyPack : null}
-                        deletePack={props.isUpdate ? props.deleteMyPack : null }
+                        updatePack={ props.isUpdate ? props.updatePack : null}
+                        deletePack={props.isUpdate ? props.deletePack : null }
             />
           )
         })}

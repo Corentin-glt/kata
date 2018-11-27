@@ -3,6 +3,10 @@
  */
 import React from 'react';
 import Proptypes from 'prop-types';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPen, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {library} from '@fortawesome/fontawesome-svg-core';
+library.add(faPen, faTimes);
 
 function ButtonPack(props) {
   return (
@@ -14,7 +18,11 @@ function ButtonPack(props) {
           null
       }
       <div className="titleButtonPack">{props.title}</div>
-      <div className="priceButtonPack">{props.price}</div>
+      <div className={props.isUpdate ?
+        "priceButtonPack" : "priceButtonPackFalse"}
+      >
+        {props.price} €
+      </div>
       {
         props.isUpdate ?
           groupButtonPack({...props})
@@ -26,15 +34,21 @@ function ButtonPack(props) {
 }
 
 function groupButtonPack(props) {
-  return(
+  return (
     <div className="groupButtonPack">
       <div className="updateButtonPack"
            onClick={() => props.updatePack(props.id)}
       >
+        <FontAwesomeIcon
+          icon="pen"
+        />
       </div>
       <div className="deleteButtonPack"
            onClick={() => props.deletePack(props.id)}
       >
+        <FontAwesomeIcon
+          icon="times"
+        />
       </div>
     </div>
   )
