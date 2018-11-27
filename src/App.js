@@ -1,17 +1,12 @@
 import React from 'react';
 import Root from './routes';
+import configureStore from './Store/configureStore'
 
-import {
-  Route
-} from 'react-router-dom';
-
+const store = configureStore();
 
 const App = () => (
   <div className="App">
-    {/*<Route path="/" component={ ({ match }) => (*/}
-      {/*<Root />*/}
-    {/*)}/>*/}
-    <Root />
+    <Root store={store}/>
   </div>
 );
 

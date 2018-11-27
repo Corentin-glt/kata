@@ -1,41 +1,23 @@
 /**
  * Created by corentin on 27/11/2018.
  */
-import React, {Component} from 'react';
+import React from 'react';
 import {
   Switch,
   HashRouter as Router,
   Route,
-  Link,
 } from 'react-router-dom';
+import PropTypes from 'prop-types'
+import {Provider} from 'react-redux';
 import Report from './Pages/Report/reportContainer';
 import Stats from './Pages/Stats/statsContainer';
 import Error404 from './Pages/Error404/error404';
 
-class Root extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      auth: false,
-      loading: true,
-    };
-  }
-
-  render() {
-    return (
+function Root({store}) {
+  return (
+    <Provider store={store}>
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/report">Report</Link>
-            </li>
-            <li>
-              <Link to="/stats">Stats</Link>
-            </li>
-          </ul>
           <Switch>
             <Route exact path="/" component={Report}/>
             <Route path="/report" component={Report}/>
@@ -44,9 +26,12 @@ class Root extends Component {
           </Switch>
         </div>
       </Router>
-    )
-  }
+    </Provider>
+  )
 }
-;
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired
+};
 
 export default Root;
