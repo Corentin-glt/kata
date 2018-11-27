@@ -35,7 +35,6 @@ const ReportScene = (props) => {
           </label>
           <input className="inputPrice" type="number" value={valuePrice}
                  onChange={handlePrice}/>
-
           <input className="validateButton" type="submit" value="Valider"/>
         </form>
       </Modal>

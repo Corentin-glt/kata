@@ -11,7 +11,7 @@ import Error404 from "../Error404/error404";
 export default function HomeScene(props) {
   return <div className="mainContainer">
     <header className="headerContainer">
-      <Menu stats={props.stats} updateStats={props.updateStats}/>
+      <Menu name={props.user.name} stats={props.stats} updateStats={props.updateStats}/>
     </header>
     <Switch>
       <Route  path="/report" component={Report}/>

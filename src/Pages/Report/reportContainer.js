@@ -109,8 +109,6 @@ class Report extends Component {
         console.log('ERROR => ', this.props.packReducer.error)
       }
     }, 500);
-
-
   }
 
   render() {
@@ -132,6 +130,7 @@ class Report extends Component {
         clickOnUpdate={this.clickOnUpdate}
         clickOnDelete={this.clickOnDelete}
         updatePack={this.updatePack}
+        user={this.props.userReducer.user}
       />
     )
   }
