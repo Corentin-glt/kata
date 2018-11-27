@@ -25,7 +25,8 @@ class Report extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    packReducer: state.packReducer
+    packReducer: state.packReducer,
+    userReducer: state.userReducer,
   }
 };
 
