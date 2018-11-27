@@ -3,7 +3,9 @@
  */
 import { combineReducers } from 'redux';
 import packReducer from './pack';
+import userReducer from './user';
 
 export default combineReducers({
-  packReducer
+  packReducer,
+  userReducer
 });

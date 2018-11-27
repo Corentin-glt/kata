@@ -8,6 +8,7 @@ import {bindActionCreators} from 'redux';
 import {ActionCreators} from '../../Actions/index';
 import packArray from '../../assets/packArray';
 
+
 class Report extends Component {
   constructor(props) {
     super(props);
@@ -16,20 +17,23 @@ class Report extends Component {
       valueLabel: '',
       valuePrice: 0,
       modalTitle: '',
+      myPackToUpdate: {}
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.handleLabel = this.handleLabel.bind(this);
     this.handlePrice = this.handlePrice.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateMyPack = this.updateMyPack.bind(this);
+    this.deleteMyPack = this.deleteMyPack.bind(this);
   }
 
   showModal() {
-    this.setState({ show: true });
+    this.setState({show: true});
   };
 
   hideModal() {
-    this.setState({ show: false });
+    this.setState({show: false});
   };
 
   handleLabel(e) {
@@ -42,25 +46,47 @@ class Report extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-      console.log(this.state);
+    console.log(this.state);
+  }
+
+  updateMyPack(id) {
+    let myPackToUpdate = {};
+    const findIndex = this.props.packReducer.packs.findIndex(
+      item => item.id === id);
+    if (findIndex > -1) {
+      myPackToUpdate = this.props.packReducer.packs[findIndex];
+      this.setState({myPackToUpdate: myPackToUpdate});
+    }
+  }
+
+  deleteMyPack(id) {
+    let myPackToDelete = {};
+    const findIndex = this.props.packReducer.packs.findIndex(
+      item => item.id === id);
+    if (findIndex > -1) {
+      myPackToDelete = this.props.packReducer.packs[findIndex];
+      this.props.deletePack(myPackToDelete)
+    }
   }
 
   render() {
     return (
-      <div>
-        <ReportScene
-          packArray={packArray}
-          showModal={this.showModal}
-          hideModal={this.hideModal}
-          show={this.state.show}
-          modalTitle={this.state.modalTitle}
-          valuePrice={this.state.valuePrice}
-          valueLabel={this.state.valueLabel}
-          handleLabel={this.handleLabel}
-          handlePrice={this.handlePrice}
-          handleSubmit={this.handleSubmit}
-        />
-      </div>
+      <ReportScene
+        packArray={packArray}
+        showModal={this.showModal}
+        hideModal={this.hideModal}
+        show={this.state.show}
+        modalTitle={this.state.modalTitle}
+        valuePrice={this.state.valuePrice}
+        valueLabel={this.state.valueLabel}
+        handleLabel={this.handleLabel}
+        handlePrice={this.handlePrice}
+        handleSubmit={this.handleSubmit}
+        myPacks={this.props.packReducer.packs}
+        myPackToUpdate={this.state.myPackToUpdate}
+        updateMyPack={this.updateMyPack}
+        deleteMyPack={this.deleteMyPack}
+      />
     )
   }
 }
@@ -68,7 +94,8 @@ class Report extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    packReducer: state.packReducer
+    packReducer: state.packReducer,
+    userReducer: state.userReducer,
   }
 };
 

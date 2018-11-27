@@ -3,16 +3,21 @@
  */
 import React from 'react';
 import Proptypes from 'prop-types';
+import Reporting from "../../Components/reporting/reporting";
 import ButtonArray from '../../Components/buttonArray/buttonArray';
 import Modal from '../../Components/modal/modal';
 
 const ReportScene = (props) => {
   const {packArray, show, showModal, hideModal, modalTitle, valueLabel, handleLabel, valuePrice, handlePrice, handleSubmit} = props;
   return (
-    <div>
-
+    <div className="containerMyPacks">
       <h2 className="reportTitle">Préviens nous dès que tu fais une vente</h2>
       <ButtonArray showModal={showModal} array={packArray}/>
+      <Reporting myPacks={props.myPacks}
+                 isUpdate
+                 updatePack={props.updateMyPack}
+                 deletePack={props.deleteMyPack}
+      />
       <Modal show={show} handleClose={hideModal}>
         <form onSubmit={handleSubmit}>
           <h3>{modalTitle}</h3>
@@ -31,6 +36,12 @@ const ReportScene = (props) => {
   )
 };
 
-ReportScene.proptypes = {};
+ReportScene.proptypes = {
+  packArray: Proptypes.array.isRequired,
+  myPacks: Proptypes.array.isRequired,
+  myPackToUpdate: Proptypes.object.isRequired,
+  updateMyPack: Proptypes.func.isRequired,
+  deleteMyPack: Proptypes.func.isRequired,
+};
 
 export default ReportScene;

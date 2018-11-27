@@ -4,7 +4,11 @@
 import * as C from '../Actions/Pack/types';
 
 const initialState = {
-  packs: [],
+  packs: [
+    {user_id: '1234567890', id: '56789', title: 'Pack Fleur', price: 109.00},
+    {user_id: '1234567890', id: '25678', title: 'Pack Super', price: 89.00},
+    {user_id: '1234567890', id: '09876', title: 'Pack Junior', price: 50}
+  ],
   loading: false,
   error: null,
   success: false,
