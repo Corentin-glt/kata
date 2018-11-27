@@ -26,6 +26,7 @@ class Report extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateMyPack = this.updateMyPack.bind(this);
     this.deleteMyPack = this.deleteMyPack.bind(this);
+    this.handleButton = this.handleButton.bind(this);
   }
 
   showModal() {
@@ -42,6 +43,14 @@ class Report extends Component {
 
   handlePrice(e) {
     this.setState({valuePrice: parseFloat(e.target.value)});
+  }
+
+  handleButton(pack) {
+    this.props.createPack({
+      title: pack.title,
+      price: pack.price,
+      user_id: this.props.userReducer.user.id
+    })
   }
 
   handleSubmit(e) {
@@ -92,6 +101,7 @@ class Report extends Component {
         updateMyPack={this.updateMyPack}
         deleteMyPack={this.deleteMyPack}
         user={this.props.userReducer.user}
+        handleButton={this.handleButton}
       />
     )
   }

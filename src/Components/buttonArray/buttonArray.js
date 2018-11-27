@@ -1,25 +1,16 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
 
 export default function ButtonArray(props) {
-  const {array, showModal} = props;
+  const {array, showModal, handleButton} = props;
   const row1 = [], row2 = [];
   array.forEach((item, i) => {
-    if (i < 3) {
-      row1.push(
-        <button className="buttonArray">
-          <label className="buttonArrayTitle">Pack {item.name}</label>
-          <label className="buttonArrayPrice">{item.price}€</label>
-        </button>
-      );
-    } else {
-      row2.push(
-        <button className="buttonArray">
-          <label className="buttonArrayTitle">Pack {item.name}</label>
-          <label className="buttonArrayPrice">{item.price}€</label>
-        </button>
-      );
-    }
+    const elem = <button onClick={() => handleButton(item)} className="buttonArray">
+      <label className="buttonArrayTitle">Pack {item.title}</label>
+      <label className="buttonArrayPrice">{item.price}€</label>
+    </button>;
+    i < 3 ? row1.push(elem) : row2.push(elem);
   });
   return (
     <div className="buttonArrayContainer">
@@ -31,5 +22,11 @@ export default function ButtonArray(props) {
         </button>
       </div>
     </div>
-  )
+  );
 }
+
+ButtonArray.prototypes = {
+  showModal: Proptypes.func.isRequired,
+  array: Proptypes.array.isRequired,
+  handleButton: Proptypes.func.isRequired
+};

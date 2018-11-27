@@ -1,26 +1,26 @@
 export default [
   {
-    name: 'Fleur',
+    title: 'Fleur',
     price: 109
   },
   {
-    name: 'Super',
+    title: 'Super',
     price: 89
   },
   {
-    name: 'Plage',
+    title: 'Plage',
     price: 209
   },
   {
-    name: 'Top',
+    title: 'Top',
     price: 59
   },
   {
-    name: 'Prems',
+    title: 'Prems',
     price: 189
   },
   {
-    name: 'King',
+    title: 'King',
     price: 309
   }
 ];

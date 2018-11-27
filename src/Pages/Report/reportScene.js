@@ -8,15 +8,30 @@ import ButtonArray from '../../Components/buttonArray/buttonArray';
 import Modal from '../../Components/modal/modal';
 
 const ReportScene = (props) => {
-  const {packArray, show, showModal, hideModal, modalTitle, valueLabel, handleLabel, valuePrice, handlePrice, handleSubmit} = props;
+  const {
+    packArray,
+    show,
+    showModal,
+    hideModal,
+    modalTitle,
+    valueLabel,
+    handleLabel,
+    valuePrice,
+    handlePrice,
+    handleSubmit,
+    myPacks,
+    updateMyPack,
+    deleteMyPack,
+    handleButton
+  } = props;
   return (
     <div className="containerMyPacks">
       <h2 className="reportTitle">Préviens nous dès que tu fais une vente</h2>
-      <ButtonArray showModal={showModal} array={packArray}/>
-      <Reporting myPacks={props.myPacks}
+      <ButtonArray handleButton={handleButton}  showModal={showModal} array={packArray}/>
+      <Reporting myPacks={myPacks}
                  isUpdate
-                 updatePack={props.updateMyPack}
-                 deletePack={props.deleteMyPack}
+                 updatePack={updateMyPack}
+                 deletePack={deleteMyPack}
       />
       <Modal show={show} handleClose={hideModal}>
         <form className="formContainer" onSubmit={handleSubmit}>
@@ -44,6 +59,15 @@ ReportScene.proptypes = {
   myPackToUpdate: Proptypes.object.isRequired,
   updateMyPack: Proptypes.func.isRequired,
   deleteMyPack: Proptypes.func.isRequired,
+  showModal: Proptypes.func.isRequired,
+  hideModal: Proptypes.func.isRequired,
+  show: Proptypes.bool.isRequired,
+  valueLabel: Proptypes.string,
+  handleLabel: Proptypes.func.isRequired,
+  valuePrice: Proptypes.string.isRequired,
+  handlePrice: Proptypes.func.isRequired,
+  handleSubmit: Proptypes.func.isRequired,
+  handleButton: Proptypes.func.isRequired
 };
 
 export default ReportScene;
