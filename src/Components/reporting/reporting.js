@@ -14,7 +14,7 @@ function Reporting(props) {
             <div className="titleUpdateTrue">Reporting</div>
             :
             <div className="titleUpdateFalse">
-              {props.myPacks.length}
+              {props.isUpdate ? props.myPacks.length : totalSale(props)}
               {props.myPacks.length > 1 ? " ventes" : " vente"}
             </div>
         }
@@ -49,6 +49,13 @@ function arrayPack(props) {
       }
     </div>
   )
+}
+function totalSale(props) {
+  let total = 0;
+  props.myPacks.forEach(item => {
+    total = total + item.numberOfTotal
+  });
+  return total;
 }
 
 function totalEuros(props) {

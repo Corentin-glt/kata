@@ -134,7 +134,7 @@ class Report extends Component {
         handleLabel={this.handleLabel}
         handlePrice={this.handlePrice}
         handleSubmit={this.handleSubmit}
-        myPacks={this.props.packReducer.packs}
+        myPacks={this.props.packReducer.packs.reverse()}
         myPackToUpdate={this.state.myPackToUpdate}
         clickOnUpdate={this.clickOnUpdate}
         clickOnDelete={this.clickOnDelete}
