@@ -2,7 +2,12 @@
  * Created by corentin on 27/11/2018.
  */
 import React, {Component} from 'react';
-import {Switch, BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {
+  Switch,
+  HashRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 import Report from './Pages/Report/reportContainer';
 import Stats from './Pages/Stats/statsContainer';
 import Error404 from './Pages/Error404/error404';
