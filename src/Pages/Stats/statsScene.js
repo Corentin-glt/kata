@@ -3,15 +3,23 @@
  */
 import React from 'react';
 import Proptypes from 'prop-types';
+import Reporting from "../../Components/reporting/reporting";
 
 const StatsScene = (props) => {
   return(
     <div>
       STATS
+      <div className="containerMyPacks">
+        <Reporting myPacks={props.myPacks}
+                   isUpdate={false}
+        />
+      </div>
     </div>
   )
 };
 
-StatsScene.proptypes = {};
+StatsScene.proptypes = {
+  myPacks: Proptypes.array.isRequired,
+};
 
 export default StatsScene;
