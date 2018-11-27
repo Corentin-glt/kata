@@ -10,13 +10,38 @@ import {ActionCreators} from '../../Actions/index';
 class Report extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.packArray = [
+      {
+        name: 'Fleur',
+        price: 109
+      },
+      {
+        name: 'Super',
+        price: 89
+      },
+      {
+        name: 'Plage',
+        price: 209
+      },
+      {
+        name: 'Top',
+        price: 59
+      },
+      {
+        name: 'Prems',
+        price: 189
+      },
+      {
+        name: 'King',
+        price: 309
+      }
+    ]
   }
 
   render() {
     return (
       <div>
-        <ReportScene packs={this.props.packReducer.packs}/>
+        <ReportScene packArray={this.packArray}/>
       </div>
     )
   }
