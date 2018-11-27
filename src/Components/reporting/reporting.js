@@ -27,13 +27,15 @@ function Reporting(props) {
       <div className="arrayMyPacks">
         {props.myPacks.map((item, index) => {
           return (
-            <ButtonPack title={item.title}
-                        price={item.price}
-                        id={item.id}
-                        index={index + 1}
-                        isUpdate={props.isUpdate}
-                        updatePack={ props.isUpdate ? props.updateMyPack : null}
-                        deletePack={props.isUpdate ? props.deleteMyPack : null }
+            <ButtonPack
+              key={index}
+              title={item.title}
+              price={item.price}
+              id={item.id}
+              index={index + 1}
+              isUpdate={props.isUpdate}
+              updatePack={props.isUpdate ? props.updateMyPack : null}
+              deletePack={props.isUpdate ? props.deleteMyPack : null}
             />
           )
         })}
@@ -42,7 +44,7 @@ function Reporting(props) {
   )
 }
 
-function totalEuros(props){
+function totalEuros(props) {
   let total = 0;
   props.myPacks.forEach(item => {
     total = total + item.price
