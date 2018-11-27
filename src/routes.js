@@ -2,10 +2,10 @@
  * Created by corentin on 27/11/2018.
  */
 import React, {Component} from 'react';
-import {Switch, BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Report from './pages/Report/reportContainer';
-import Stats from './pages/Stats/statsContainer';
+import {Switch, BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+
 import Error404 from './pages/Error404/error404';
+import Home from './pages/Home/homeContainer';
 
 class Root extends Component {
   constructor(props) {
@@ -20,21 +20,8 @@ class Root extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/report">Report</Link>
-            </li>
-            <li>
-              <Link to="/stats">Stats</Link>
-            </li>
-          </ul>
           <Switch>
-            <Route exact path="/" component={Report}/>
-            <Route path="/report" component={Report}/>
-            <Route path="/stats" component={Stats}/>
+            <Route path="/" component={Home}/>
             <Route component={Error404}/>
           </Switch>
         </div>

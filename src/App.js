@@ -1,9 +1,8 @@
-import React from 'react';
-import Root from './routes';
-
 import {
   Route
 } from 'react-router-dom';
+import React from 'react';
+import Root from './routes';
 
 
 const App = () => (

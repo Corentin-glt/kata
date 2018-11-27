@@ -10,7 +10,7 @@ const ReportScene = (props) => {
       REPORT
     </div>
   )
-}
+};
 
 ReportScene.proptypes = {};
 

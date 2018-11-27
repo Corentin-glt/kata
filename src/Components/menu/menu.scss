@@ -1,0 +1,21 @@
+$maxPercentage : 100%;
+$titleFontSize : 25px;
+$fontFamily: Helvetica, sans-serif;
+
+@mixin flexRowSpaceMiddle() {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuContainer {
+  width: $maxPercentage;
+  @include flexRowSpaceMiddle();
+  .menuTitle {
+    font-family: $fontFamily;
+    font-size: $titleFontSize;
+    font-weight: lighter;
+  }
+}
+
