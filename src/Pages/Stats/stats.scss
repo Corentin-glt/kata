@@ -1,0 +1,10 @@
+$fontReportingTitle: Helvetica, sans-serif;
+$fontReportingSize: 20px;
+$fontReportingWeight: "200";
+
+.titleStatsContainer{
+  font-family: $fontReportingTitle;
+  font-size: $fontReportingSize;
+  font-weight: $fontReportingWeight;
+  margin: 10px 0px;
+}

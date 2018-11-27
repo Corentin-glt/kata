@@ -26,6 +26,7 @@ $fontReportingWeightBold: bold;
 .titleContainerReporting {
   flex-grow: 1;
   display: flex;
+  padding-right: 20px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: baseline;
@@ -50,6 +51,7 @@ $fontReportingWeightBold: bold;
   justify-content: flex-start;
 }
 .priceUpdateFalse {
+  //padding-right: 18px;
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;

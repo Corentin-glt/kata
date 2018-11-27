@@ -15,6 +15,7 @@ class Stats extends Component {
     }
   }
 
+
   componentWillMount(){
     let newArrayPacks = [];
     const packsReducer = [...this.props.packReducer.packs.reverse()];
@@ -37,7 +38,7 @@ class Stats extends Component {
 
   render() {
     return (
-      <StatsScene myPacks={this.state.myPacks} />
+      <StatsScene myPacks={this.state.myPacks}/>
     )
   }
 }

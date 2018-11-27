@@ -3,9 +3,9 @@
  */
 import React from 'react';
 import Proptypes from 'prop-types';
-import Reporting from "../../Components/reporting/reporting";
-import ButtonArray from '../../Components/buttonArray/buttonArray';
-import Modal from '../../Components/modal/modal';
+import Reporting from "../../Components/Reporting/reporting";
+import ButtonArray from '../../Components/ButtonArray/buttonArray';
+import Modal from '../../Components/Modal/modal';
 
 const ReportScene = (props) => {
   const {

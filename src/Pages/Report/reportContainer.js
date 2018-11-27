@@ -6,7 +6,7 @@ import ReportScene from "./reportScene";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ActionCreators} from '../../Actions/index';
-import packArray from '../../assets/packArray';
+import packArray from '../../Assets/packArray';
 
 
 class Report extends Component {
@@ -163,7 +163,7 @@ class Report extends Component {
         handleLabel={this.handleLabel}
         handlePrice={this.handlePrice}
         handleSubmit={this.handleSubmit}
-        myPacks={this.props.packReducer.packs}
+        myPacks={this.props.packReducer.packs.reverse()}
         myPackToUpdate={this.state.myPackToUpdate}
         clickOnUpdate={this.clickOnUpdate}
         clickOnDelete={this.clickOnDelete}

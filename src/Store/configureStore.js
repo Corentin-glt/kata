@@ -12,7 +12,7 @@ export default function configureStore() {
   return createStore(rootReducer, compose(
     applyMiddleware(
       ...middlewares,
-      logger
+      //logger
     )
   ));
 };

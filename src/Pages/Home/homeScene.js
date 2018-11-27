@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../../Components/menu/menu';
+import Menu from '../../Components/Menu/menu';
 import Report from '../Report/reportContainer';
 import Stats from '../Stats/statsContainer';
 import {Switch, BrowserRouter as Router, Route, Link} from 'react-router-dom';
