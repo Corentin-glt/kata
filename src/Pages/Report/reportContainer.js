@@ -28,6 +28,7 @@ class Report extends Component {
     this.clickOnUpdate = this.clickOnUpdate.bind(this);
     this.clickOnDelete = this.clickOnDelete.bind(this);
     this.updatePack = this.updatePack.bind(this);
+    this.handleButton = this.handleButton.bind(this);
   }
 
   componentWillUnmout() {
@@ -48,6 +49,14 @@ class Report extends Component {
 
   handlePrice(e) {
     this.setState({valuePrice: parseFloat(e.target.value)});
+  }
+
+  handleButton(pack) {
+    this.props.createPack({
+      title: pack.title,
+      price: pack.price,
+      user_id: this.props.userReducer.user.id
+    })
   }
 
   handleSubmit(e) {
@@ -131,6 +140,7 @@ class Report extends Component {
         clickOnDelete={this.clickOnDelete}
         updatePack={this.updatePack}
         user={this.props.userReducer.user}
+        handleButton={this.handleButton}
       />
     )
   }

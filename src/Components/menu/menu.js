@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPoll, faListAlt} from '@fortawesome/free-solid-svg-icons'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {Link} from "react-router-dom";
+import Proptypes from "prop-types";
 
 library.add(faPoll, faListAlt);
 
@@ -31,3 +32,8 @@ export default function Menu(props) {
     </div>
   );
 }
+
+Menu.prototypes = {
+  name: Proptypes.string.isRequired,
+  stats: Proptypes.bool.isRequired
+};

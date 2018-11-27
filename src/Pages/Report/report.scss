@@ -6,7 +6,7 @@ $fontReportTitle: Helvetica, sans-serif;
 $fontReportSize: 22px;
 $fontLabelSize: 18px;
 $fontInputSize: 16px;
-$buttonColor: darken(pink, 30%);
+$buttonColor: #FF69B4;
 
 @mixin displayFlexColumn() {
   display: flex;
@@ -71,5 +71,6 @@ $buttonColor: darken(pink, 30%);
     font-size:$fontReportSize;
     font-weight: bold;
     color: $buttonColor;
+    outline: none;
   }
 }
