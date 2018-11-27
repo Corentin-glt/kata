@@ -8,7 +8,6 @@ import Reporting from "../../Components/reporting/reporting";
 const StatsScene = (props) => {
   return(
     <div>
-      STATS
       <div className="containerMyPacks">
         <Reporting myPacks={props.myPacks}
                    isUpdate={false}

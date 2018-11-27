@@ -18,7 +18,6 @@ class Stats extends Component {
   componentWillMount(){
     let newArrayPacks = [];
     const packsReducer = [...this.props.packReducer.packs.reverse()];
-    console.log('\n \nBEFORE ==> ', packsReducer);
     packsReducer.forEach(item => {
       const found = newArrayPacks.some(newItem => newItem.title.toLowerCase() === item.title.toLowerCase());
       if (!found) {
@@ -33,9 +32,7 @@ class Stats extends Component {
         });
       }
     });
-    console.log(newArrayPacks);
     this.setState({myPacks: newArrayPacks});
-    console.log('\n \nAFTER ==> ', packsReducer)
   }
 
   render() {

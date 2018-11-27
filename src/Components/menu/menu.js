@@ -12,7 +12,7 @@ export default function Menu(props) {
   const {name, stats} = props;
   return (
     <div className="menuContainer">
-      <h1 className="menuTitle">Bonjour {name}</h1>
+      <h1 className="menuTitle">Bonjour {name} !</h1>
       {stats ?
         <Link
           className="linkMenu" to="/report"
